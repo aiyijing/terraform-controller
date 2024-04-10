@@ -40,6 +40,7 @@ func (a *Assembler) InitContainer() v1.Container {
 	c := v1.Container{
 		Name:            types.TerraformInitContainerName,
 		Image:           a.TerraformImage,
+		WorkingDir:      types.WorkingVolumeMountPath,
 		ImagePullPolicy: v1.PullIfNotPresent,
 		Command: []string{
 			"sh",
@@ -51,3 +52,4 @@ func (a *Assembler) InitContainer() v1.Container {
 	}
 	return c
 }
+

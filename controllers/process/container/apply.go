@@ -14,8 +14,9 @@ func (a *Assembler) ApplyContainer(executionType types.TerraformExecutionType, r
 		Name:            types.TerraformContainerName,
 		Image:           a.TerraformImage,
 		ImagePullPolicy: v1.PullIfNotPresent,
+		WorkingDir:      types.WorkingVolumeMountPath,
 		Command: []string{
-			"bash",
+			"sh",
 			"-c",
 			fmt.Sprintf("terraform %s -lock=false -auto-approve", executionType),
 		},
